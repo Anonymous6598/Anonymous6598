@@ -1,4 +1,10 @@
-from customtkinter import *; from pickle import *; from tkinter import filedialog; import os; import sys; import docx
+from customtkinter import * 
+from pickle import * 
+from tkinter import filedialog
+from docx.shared import RGBColor
+import os 
+import sys 
+import docx 
 
 class Programm(CTk):
 	def __init__(self):
@@ -12,9 +18,13 @@ class Programm(CTk):
 		self.main_screen.title("my_diary")
 		self.main_screen.iconbitmap("my_diary_icon.ico")
 
-		self.main_screen.bind('<F1>', self.__programm_version__); self.main_screen.bind('<Control_L>' + '<t>', self.__theme__); self.main_screen.bind('<Control_L>' + '<f>', self.__fullscreen__); self.main_screen.bind('<Escape>' + '<e>', self.__exit__); self.main_screen.bind('<Return>', self.__text_autosave__); self.main_screen.bind('<Control_L>' + '<s>', self.__text_autosave__)
+		self.main_screen.bind('<F1>', self.__programm_version__) 
+		self.main_screen.bind('<Control_L>' + '<t>', self.__theme__) 
+		self.main_screen.bind('<Control_L>' + '<f>', self.__fullscreen__) 
+		self.main_screen.bind('<Escape>' + '<e>', self.__exit__)
 
-		self.main_screen_theme_numbers = 1; self.main_screen_fullscreen_numbers = 1
+		self.main_screen_theme_numbers = 1
+		self.main_screen_fullscreen_numbers = 1
 
 		with open("my_diary_settings.pickle", "rb") as self.data:
 			self.new_data = load(self.data)
@@ -39,8 +49,6 @@ class Programm(CTk):
 		self.main_screen_save_as_kotlin_button = CTkButton(master=self.main_screen, text="сачувај као kotlin", height=20, width=25, corner_radius=0, command=self.__save_text_as_kotlin__)
 
 		self.main_screen_save_button_clicks = 1
-
-		self.file_txt_number = 0; self.file_docx_number = 0; self.file_py_number = 0; self.file_java_number = 0; self.file_kotlin_number = 0
 
 		self.main_screen_clear_button = CTkButton(master=self.main_screen, text="обриши текст", height=20, width=25, corner_radius=0, command=self.__clear_text__)
 		self.main_screen_clear_button.grid(column=1, row=0)
@@ -235,12 +243,13 @@ class Programm(CTk):
 		if self.main_screen_settings_autosave_switch_varuable == "on":
 			self.main_screen_frame_textbox.insert("1.0", self.autosaved_text)
 
-			self.main_screen.bind('<Return>', self.__text_autosave__); self.main_screen.bind('<Control_L>' + '<s>', self.__text_autosave__)
+			self.main_screen.bind('<Return>', self.__text_autosave__) 
+			self.main_screen.bind('<Control_L>' + '<s>', self.__text_autosave__)
 
 		elif self.main_screen_settings_autosave_switch_varuable == "off":
-			self.main_screen.unbind('<Return>'); self.main_screen.unbind('<Control_L>' + '<s>')
+			self.main_screen.unbind('<Return>')
+			self.main_screen.unbind('<Control_L>' + '<s>')
 				  
-
 		self.main_screen_coding_frame = CTkFrame(master=self.main_screen, height=776, width=717.5, border_width=2, border_color=("black", "white"), corner_radius=0)
 
 		self.main_screen_coding_frame_textbox = CTkTextbox(master=self.main_screen_coding_frame, height=770, width=709.5, corner_radius=0)
@@ -280,37 +289,47 @@ class Programm(CTk):
 			self.main_screen_save_as_kotlin_button.grid_forget()
 			
 	def __save_text_as_txt__(self):
-		self.file_txt_number += 1
-		self.file = open(filedialog.askdirectory() + "/my_diary_note_" + str(self.file_txt_number) + ".txt", "w")
+		self.file = open(filedialog.asksaveasfilename(filetypes=[("Text file (*.txt)", "*.txt")], defaultextension=[("Text file (*.txt)", "*.txt")]), "w")
 		file_data = self.main_screen_frame_textbox.get("1.0", END)
 		self.file.write(file_data)
 		self.file.close()
 
 	def __save_as_docx__(self):
-		self.file_docx_number += 1
 		self.file = docx.Document()
 		self.file_data = self.main_screen_frame_textbox.get("1.0", END)
-		self.file.add_paragraph(self.file_data)
+		self.file_run = self.file.add_paragraph().add_run(self.file_data)
+		self.font = self.file_run.font
+		if self.main_screen_edit_color_button_data == "black":
+			self.font.color.rgb = RGBColor(0, 0, 0)
+		
+		elif self.main_screen_edit_color_button_data == "white":
+			self.font.color.rgb = RGBColor(255, 255, 255)
+
+		elif self.main_screen_edit_color_button_data == "red":
+			self.font.color.rgb = RGBColor(250, 0, 0)
+
+		elif self.main_screen_edit_color_button_data == "green":
+			self.font.color.rgb = RGBColor(0, 255, 0)
+
+		elif self.main_screen_edit_color_button_data == "blue":
+			self.font.color.rgb = RGBColor(0, 0, 255)
 			
-		self.file.save(filedialog.askdirectory() + "/my_diary_word_file_" + str(self.file_txt_number) + ".docx")
+		self.file.save(filedialog.asksaveasfilename(filetypes=[("Word file (*.docx)", "*.docx")], defaultextension=[("Word file (*.docx)", "*.docx")]))
 
 	def __save_text_as_py__(self):
-		self.file_py_number += 1
-		self.file = open(filedialog.askdirectory() + "/my_diary_python_file_" + str(self.file_py_number) + ".py", "w")
+		self.file = open(filedialog.asksaveasfilename(filetypes=[("Python file (*.py)", "*.py")], defaultextension=[("Python file (*.py)", "*.py")]), "w")
 		file_data = self.main_screen_frame_textbox.get("1.0", END)
 		self.file.write(file_data)
 		self.file.close()
 
 	def __save_text_as_java__(self):
-		self.file_java_number += 1
-		self.file = open(filedialog.askdirectory() + "/my_diary_java_file_" + str(self.file_java_number) + ".java", "w")
+		self.file = open(filedialog.asksaveasfilename(filetypes=[("Java file (*.java)", "*.java")], defaultextension=[("Java file (*.java)", "*.java")]), "w")
 		file_data = self.main_screen_frame_textbox.get("1.0", END)
 		self.file.write(file_data)
 		self.file.close()
 
 	def __save_text_as_kotlin__(self):
-		self.file_kotlin_number += 1
-		self.file = open(filedialog.askdirectory() + "/my_diary_kotlin_file_" + str(self.file_kotlin_number) + ".kt", "w")
+		self.file = open(filedialog.asksaveasfilename(filetypes=[("Kotlin file (*.kt)", "*.kt")], defaultextension=[("Kotlin file (*.kt)", "*.kt")]), "w")
 		file_data = self.main_screen_frame_textbox.get("1.0", END)
 		self.file.write(file_data)
 		self.file.close()
@@ -627,14 +646,15 @@ class Programm(CTk):
 			with open("my_diary_autosave_settings.pickle", "wb") as self.autosave_data:
 				dump(self.main_screen_settings_autosave_switch_value, self.autosave_data)
 
-
-			self.main_screen.bind('<Return>', self.__text_autosave__); self.main_screen.bind('<Control_L>' + '<s>', self.__text_autosave__)
+			self.main_screen.bind('<Return>', self.__text_autosave__)
+			self.main_screen.bind('<Control_L>' + '<s>', self.__text_autosave__)
 		
 		elif self.main_screen_settings_autosave_switch_value == "off":
 			with open("my_diary_autosave_settings.pickle", "wb") as self.autosave_data:
 				dump(self.main_screen_settings_autosave_switch_value, self.autosave_data)
 
-			self.main_screen.unbind('<Return>'); self.main_screen.unbind('<Control_L>' + '<s>')
+			self.main_screen.unbind('<Return>')
+			self.main_screen.unbind('<Control_L>' + '<s>')
 
 	def __text_autosave__(self, event):
 		self.main_screen_frame_textbox_text_data = self.main_screen_frame_textbox.get("1.0", END)
@@ -649,17 +669,20 @@ class Programm(CTk):
 		self.main_screen_additional_window.resizable(False, False)
 		self.main_screen_additional_window.title("Version_info")
 
-		self.main_screen_additional_window_text = CTkLabel(master=self.main_screen_additional_window, text="версија: 0.1", font=("Roboto Bold", 36))
+		self.main_screen_additional_window_text = CTkLabel(master=self.main_screen_additional_window, text="версија: 0.5", font=("Roboto Bold", 36))
 		self.main_screen_additional_window_text.place(x=0, y=5)
 
 		self.main_screen_additional_window_whats_new_text = CTkLabel(master=self.main_screen_additional_window, text="шта је ново:", height=1)
 		self.main_screen_additional_window_whats_new_text.place(x=0, y=47)
 
-		self.main_screen_additional_window_whats_new_1_text = CTkLabel(master=self.main_screen_additional_window, text="1) додати су подешавања", height=1)
+		self.main_screen_additional_window_whats_new_1_text = CTkLabel(master=self.main_screen_additional_window, text="1) додат шпански и немачки језци", height=1)
 		self.main_screen_additional_window_whats_new_1_text.place(x=75, y=47)
 
-		self.main_screen_additional_window_whats_new_2_text = CTkLabel(master=self.main_screen_additional_window, text="2) оптимизација", height=1)
+		self.main_screen_additional_window_whats_new_2_text = CTkLabel(master=self.main_screen_additional_window, text="2) Додат аutosave", height=1)
 		self.main_screen_additional_window_whats_new_2_text.place(x=75, y=67)
+
+		self.main_screen_additional_window_whats_new_3_text = CTkLabel(master=self.main_screen_additional_window, text="3) Побољшана подршка и модификација за Word", height=1)
+		self.main_screen_additional_window_whats_new_3_text.place(x=75, y=87)
 
 	def __theme__(self, event):
 		self.main_screen_theme_numbers += 1
@@ -708,4 +731,5 @@ class Programm(CTk):
 		self.main_screen_exit_window.quit()
 
 if __name__ == "__main__":
-	programm = Programm(); programm.__run__()
+	programm = Programm() 
+	programm.__run__()
