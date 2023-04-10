@@ -362,7 +362,7 @@ class Programm(CTk):
 
 			self.file.save(filedialog.asksaveasfilename(filetypes=[("Word file (*.docx)", "*.docx")], defaultextension=[("Word file (*.docx)", "*.docx")]))
 		
-		finally:
+		except AttributeError:
 			if self.language_data == "Србски":
 				showerror(title="Грешка", message="Појавила се грешка. Нисам мого да сачувам фајл")
 
