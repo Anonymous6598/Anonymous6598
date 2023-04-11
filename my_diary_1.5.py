@@ -8,8 +8,8 @@ from docx2pdf import convert; from pdf2docx import Converter
 import os, sys, docx
 
 class Programm(CTk):
-	def __init__(self):
-		super().__init__()
+	def __init__(self, *args, **kwargs):
+		CTk.__init__(*args, **kwargs)
 
 		set_default_color_theme("green")
 		set_widget_scaling(1.251)
@@ -17,6 +17,7 @@ class Programm(CTk):
 
 		self.title("My diary")
 		self.iconbitmap("my diary icon.ico")
+		self.geometry(f"{1920}x{1080}")
 
 		self.bind('<F1>', self.__programm_version__)  
 		self.bind('<Control_L>' + '<f>', self.__fullscreen__) 
