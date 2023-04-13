@@ -9,7 +9,7 @@ import os, sys, docx
 
 class Programm(CTk):
 	def __init__(self, *args, **kwargs):
-		CTk.__init__(*args, **kwargs)
+		CTk.__init__(self, *args, **kwargs)
 
 		set_default_color_theme("green")
 		set_widget_scaling(1.251)
