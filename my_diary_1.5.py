@@ -17,7 +17,6 @@ class Programm(CTk):
 
 		self.title("My diary")
 		self.iconbitmap("my diary icon.ico")
-		self.geometry(f"{1920}x{1080}")
 
 		self.bind('<F1>', self.__programm_version__)  
 		self.bind('<Control_L>' + '<f>', self.__fullscreen__) 
