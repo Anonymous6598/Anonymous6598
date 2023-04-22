@@ -2,25 +2,27 @@ from customtkinter import *
 from tkinter import * 
 from pickle import *
 from tkinter.messagebox import *
+from aspose.words import *
 from tkinter import filedialog
 from docx.shared import RGBColor, Pt
-from docx2pdf import convert; from pdf2docx import Converter
 import os, sys, docx
 
 class Programm(CTk):
-	def __init__(self, *args, **kwargs):
+	def __init__(self, *args, **kwargs) -> CTk:
 		CTk.__init__(self, *args, **kwargs)
 
 		set_default_color_theme("green")
 		set_widget_scaling(1.251)
 		deactivate_automatic_dpi_awareness()
 
+		self.geometry("1920x1080")
 		self.title("My diary")
 		self.iconbitmap("my diary icon.ico")
 
 		self.bind('<F1>', self.__programm_version__)  
 		self.bind('<Control_L>' + '<f>', self.__fullscreen__) 
 		self.bind('<Escape>' + '<e>', self.__exit__)
+		self.bind('<Alt_L>' + '<t>', self.__open_terminal__)
 
 		self.main_screen_fullscreen_numbers = 1
 
@@ -277,10 +279,10 @@ class Programm(CTk):
 
 		self.main_screen_settings_button_clicks = 1
 
-		self.main_screen_frame = CTkFrame(master=self, height=776, width=1535, border_width=2, border_color=("black", "white"), corner_radius=0)
+		self.main_screen_frame = CTkFrame(master=self, height=771, width=1535, border_width=2, border_color=("black", "white"), corner_radius=0)
 		self.main_screen_frame.place(x=0, y=21)
 
-		self.main_screen_frame_textbox = CTkTextbox(master=self.main_screen_frame, height=770.5, width=1530, corner_radius=0)
+		self.main_screen_frame_textbox = CTkTextbox(master=self.main_screen_frame, height=766, width=1530, corner_radius=0)
 		self.main_screen_frame_textbox.place(x=2, y=2)
 
 		self.autosaved_text = str(self.new_text_data)
@@ -297,9 +299,12 @@ class Programm(CTk):
 			self.unbind('<Return>')
 			self.unbind('<Control_L>' + '<s>')
 				  
-		self.main_screen_coding_frame = CTkFrame(master=self, height=776, width=807, border_width=2, border_color=("black", "white"), corner_radius=0)
+		self.main_screen_coding_frame = CTkFrame(master=self, height=771, width=807, border_width=2, border_color=("black", "white"), corner_radius=0)
 
-		self.main_screen_coding_frame_textbox = CTkTextbox(master=self.main_screen_coding_frame, height=770, width=801, corner_radius=0)
+		self.main_screen_coding_frame_textbox = CTkTextbox(master=self.main_screen_coding_frame, height=766, width=801, corner_radius=0)
+
+	def __clear_text__(self):
+		self.main_screen_frame_textbox.delete("1.0", END)
 
 	def __save__(self):
 		self.main_screen_save_button_clicks += 1
@@ -572,15 +577,15 @@ class Programm(CTk):
 			self.main_screen_settings_button.grid(column=6, row=0)
 
 	def __pdf_to_docx__(self):
-		self.pdf_file = filedialog.askopenfilename(title="convert pdf file", filetypes=[("Pdf file (*.pdf)", "*.pdf")], defaultextension=[("Pdf file (*.pdf)", "*.pdf")])
-		self.file = Converter(self.pdf_file)
-		self.file.convert(self.pdf_file.endswith(".docx"))
-		self.file.close()
-
+		self.file = filedialog.askopenfilename(title="convert pdf file", filetypes=[("Pdf file (*.pdf)", "*.pdf")], defaultextension=[("Pdf file (*.pdf)", "*.pdf")])
+		self.converted_file = Document(self.file)
+		self.converted_file.save(self.file + ".docx")
+		
 	def __docx_to_pdf__(self):
 		self.file = filedialog.askopenfilename(title="convert docx file", filetypes=[("Word file (*.docx)", "*.docx")], defaultextension=[("Word file (*.docx)", "*.docx")])
-		convert(self.file, self.file.endswith(".pdf"))
-
+		self.converted_file = Document(self.file)
+		self.converted_file.save(self.file + ".pdf")
+		
 	def __settings__(self):
 		self.main_screen_settings_button_clicks += 1
 		if self.main_screen_settings_button_clicks % 2 == 0:
@@ -780,12 +785,21 @@ class Programm(CTk):
 			
 			self.main_screen_frame.configure(height=842)
 			self.main_screen_frame_textbox.configure(height=836)
+
+			self.main_screen_coding_frame.configure(height=842)
+			self.main_screen_coding_frame_textbox.configure(height=836)
 		
 		else:
 			self.attributes('-fullscreen', False)
 
-			self.main_screen_frame.configure(height=776)
-			self.main_screen_frame_textbox.configure(height=770)
+			self.main_screen_frame.configure(height=771)
+			self.main_screen_frame_textbox.configure(height=766)
+
+			self.main_screen_coding_frame.configure(height=771)
+			self.main_screen_coding_frame_textbox.configure(height=766)
+
+	def __open_terminal__(self, event):
+		self.terminal_frame = Terminal(master=self)
 
 	def __exit__(self, event):
 		if self.language_data == "Србски":
@@ -806,7 +820,146 @@ class Programm(CTk):
 
 		elif self.language_data == "Español":
 			self.main_screen_exit = askyesno(title="salir", message="quiero salir?")
-			if self.main_screen_exit: sys.exit()			
+			if self.main_screen_exit: sys.exit()
 
+class Terminal(CTkToplevel):
+	def __init__(self, master, *args, **kwargs) -> CTkToplevel:
+		CTkToplevel.__init__(self, master, *args, **kwargs)
+
+		self.geometry("374x986")
+		self.attributes("-toolwindow", True)
+		self.resizable(False, False)
+		self.title("My Diary terminal shell")
+
+		self.terminal_frame = CTkFrame(master=self, height=791, width=300, border_width=1, border_color="white")
+
+		self.terminal_textbox = CTkTextbox(master=self, height=755, width=296, fg_color="black", text_color="green")
+		self.terminal_textbox.place(x=1.5, y=1)
+
+		self.terminal_textbox.insert("0.0", ">>>")
+		self.terminal_textbox.configure(state="disabled")
+
+		self.terminal_entry = CTkEntry(master=self, height=30, width=296, fg_color="black", text_color="green")
+		self.terminal_entry.place(x=1.5, y=758)
+
+		self.terminal_entry.bind('<Return>', self.__terminal_action__)
+
+	def __terminal_action__(self, event):
+		self.terminal_entry_data = self.terminal_entry.get()
+
+		self.terminal_textbox.configure(state="normal")
+		if self.terminal_entry_data == "clear text":
+			programm.__clear_text__()
+
+			self.terminal_textbox.configure(state="normal")
+			self.terminal_textbox.insert(END, self.terminal_entry_data + "\n", "-1.0")
+			self.terminal_textbox.insert(END, ">>>", "-1.0")
+			self.terminal_textbox.configure(state="disabled")
+			self.terminal_entry.delete("-1", END)
+		
+		elif self.terminal_entry_data == "save text as txt":
+			programm.__save_text_as_txt__()
+
+			self.terminal_textbox.configure(state="normal")
+			self.terminal_textbox.insert(END, self.terminal_entry_data + "\n", "-1.0")
+			self.terminal_textbox.insert(END, ">>>", "-1.0")
+			self.terminal_textbox.configure(state="disabled")
+			self.terminal_entry.delete("-1", END)
+
+		elif self.terminal_entry_data == "save text as docx":
+			programm.__save_text_as_docx__()
+
+			self.terminal_textbox.configure(state="normal")
+			self.terminal_textbox.insert(END, self.terminal_entry_data + "\n", "-1.0")
+			self.terminal_textbox.insert(END, ">>>", "-1.0")
+			self.terminal_textbox.configure(state="disabled")
+			self.terminal_entry.delete("-1", END)
+
+		elif self.terminal_entry_data == "save text as python":
+			programm.__save_text_as_py__()
+
+			self.terminal_textbox.configure(state="normal")
+			self.terminal_textbox.insert(END, self.terminal_entry_data + "\n", "-1.0")
+			self.terminal_textbox.insert(END, ">>>", "-1.0")
+			self.terminal_textbox.configure(state="disabled")
+			self.terminal_entry.delete("-1", END)
+
+		elif self.terminal_entry_data == "save text as java":
+			programm.__save_text_as_java__()
+
+			self.terminal_textbox.configure(state="normal")
+			self.terminal_textbox.insert(END, self.terminal_entry_data + "\n", "-1.0")
+			self.terminal_textbox.insert(END, ">>>", "-1.0")
+			self.terminal_textbox.configure(state="disabled")
+			self.terminal_entry.delete("-1", END)
+
+		elif self.terminal_entry_data == "save text as kotlin":
+			programm.__save_text_as_kotlin__()
+
+			self.terminal_textbox.configure(state="normal")
+			self.terminal_textbox.insert(END, self.terminal_entry_data + "\n", "-1.0")
+			self.terminal_textbox.insert(END, ">>>", "-1.0")
+			self.terminal_textbox.configure(state="disabled")
+			self.terminal_entry.delete("-1", END)
+
+		elif self.terminal_entry_data == "open txt file":
+			programm.__open_file_txt__()
+
+			self.terminal_textbox.configure(state="normal")
+			self.terminal_textbox.insert(END, self.terminal_entry_data + "\n", "-1.0")
+			self.terminal_textbox.insert(END, ">>>", "-1.0")
+			self.terminal_textbox.configure(state="disabled")
+			self.terminal_entry.delete("-1", END)
+
+		elif self.terminal_entry_data == "open docx file":
+			programm.__open_file_docx__()
+
+			self.terminal_textbox.configure(state="normal")
+			self.terminal_textbox.insert(END, self.terminal_entry_data + "\n", "-1.0")
+			self.terminal_textbox.insert(END, ">>>", "-1.0")
+			self.terminal_textbox.configure(state="disabled")
+			self.terminal_entry.delete("-1", END)
+
+		elif self.terminal_entry_data == "open python script":
+			programm.__open_file_py__()
+
+			self.terminal_textbox.configure(state="normal")
+			self.terminal_textbox.insert(END, self.terminal_entry_data + "\n", "-1.0")
+			self.terminal_textbox.insert(END, ">>>", "-1.0")
+			self.terminal_textbox.configure(state="disabled")
+			self.terminal_entry.delete("-1", END)
+
+		elif self.terminal_entry_data == "convert pdf to docx":
+			programm.__pdf_to_docx__()
+
+			self.terminal_textbox.configure(state="normal")
+			self.terminal_textbox.insert(END, self.terminal_entry_data + "\n", "-1.0")
+			self.terminal_textbox.insert(END, ">>>", "-1.0")
+			self.terminal_textbox.configure(state="disabled")
+			self.terminal_entry.delete("-1", END)
+
+		elif self.terminal_entry_data == "convert docx to pdf":
+			programm.__docx_to_pdf__()
+
+			self.terminal_textbox.configure(state="normal")
+			self.terminal_textbox.insert(END, self.terminal_entry_data + "\n", "-1.0")
+			self.terminal_textbox.insert(END, ">>>", "-1.0")
+			self.terminal_textbox.configure(state="disabled")
+			self.terminal_entry.delete("-1", END)
+
+		elif self.terminal_entry_data == "exit terminal":
+			self.destroy()
+
+		elif self.terminal_entry_data == "exit programm":
+			sys.exit()
+		
+		else:
+			self.terminal_textbox.configure(state="normal")
+			self.terminal_textbox.insert(END, "command doesn't exist" + "\n", "-1.0")
+			self.terminal_textbox.insert(END, ">>>", "-1.0")
+			self.terminal_textbox.configure(state="disabled")
+			self.terminal_entry.delete("-1", END)
+			
 if __name__ == "__main__":
-	programm = Programm().mainloop()
+	programm = Programm()
+	programm.mainloop()
