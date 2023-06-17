@@ -608,7 +608,7 @@ class Program(CTk):
 		self.main_screen_word_counter.place_forget()
 
 	def __save_text_as__(self):
-		self.file = open(filedialog.asksaveasfilename(filetypes=[("All Files (*.*)", "*.*"), ("Text file (*.txt)", "*.txt"), ("Python file (*.py)", "*.p"), ("Java file (*.java)", "*.java"), ("C# file (*.csharp)", "*.csharp"), ("HTML file (*.html)", "*.html"), ("CSS file (*.css)", "*.css"), ("JavaScript file (*.js)", "*.js"), ("C++ file (*.cpp)", "*.cpp")], defaultextension=[("All Files (*.*)", "*.*"), ("Text file (*.txt)", "*.txt"), ("Word file (*.docx)", "*.docx"), ("Python file (*.py)", "*.p"), ("Java file (*.java)", "*.java"), ("C# file (*.csharp)", "*.csharp"), ("HTML file (*.html)", "*.html"), ("CSS file (*.css)", "*.css"), ("JavaScript file (*.js)", "*.js"), ("C++ file (*.cpp)", "*.cpp")]), "w+")
+		self.file = open(filedialog.asksaveasfilename(filetypes=[("All Files (*.*)", "*.*"), ("Text file (*.txt)", "*.txt"), ("Python file (*.py)", "*.p"), ("Java file (*.java)", "*.java"), ("C# file (*.csharp)", "*.csharp"), ("HTML file (*.html)", "*.html"), ("CSS file (*.css)", "*.css"), ("JavaScript file (*.js)", "*.js"), ("C++ file (*.cpp)", "*.cpp")], defaultextension=[("All Files (*.*)", "*.*"), ("Text file (*.txt)", "*.txt"), ("Word file (*.docx)", "*.docx"), ("Python file (*.py)", "*.p"), ("Java file (*.java)", "*.java"), ("C# file (*.csharp)", "*.csharp"), ("HTML file (*.html)", "*.html"), ("CSS file (*.css)", "*.css"), ("JavaScript file (*.js)", "*.js"), ("C++ file (*.cpp)", "*.cpp")]), "w+", encoding="UTF-8")
 		self.file_data = self.main_screen_frame_textbox.get("1.0", END)
 		self.file.write(self.file_data)
 		self.file.close()
@@ -725,7 +725,7 @@ class Program(CTk):
 		self.main_screen_word_counter.place_forget()
 
 	def __open_file__(self):
-		self.openned_file = self.file = open(filedialog.askopenfilename(title="open file", filetypes=[("All Files (*.*)", "*.*"), ("Text file (*.txt)", "*.txt"), ("Python file (*.py)", "*.p"), ("Java file (*.java)", "*.java"), ("C# file (*.csharp)", "*.csharp"), ("HTML file (*.html)", "*.html"), ("CSS file (*.css)", "*.css"), ("JavaScript file (*.js)", "*.js"), ("C++ file (*.cpp)", "*.cpp")], defaultextension=[("All Files (*.*)", "*.*"), ("Text file (*.txt)", "*.txt"), ("Word file (*.docx)", "*.docx"), ("Python file (*.py)", "*.p"), ("Java file (*.java)", "*.java"), ("C# file (*.csharp)", "*.csharp"), ("HTML file (*.html)", "*.html"), ("CSS file (*.css)", "*.css"), ("JavaScript file (*.js)", "*.js"), ("C++ file (*.cpp)", "*.cpp")]), "r+")
+		self.openned_file = self.file = open(filedialog.askopenfilename(title="open file", filetypes=[("All Files (*.*)", "*.*"), ("Text file (*.txt)", "*.txt"), ("Python file (*.py)", "*.p"), ("Java file (*.java)", "*.java"), ("C# file (*.csharp)", "*.csharp"), ("HTML file (*.html)", "*.html"), ("CSS file (*.css)", "*.css"), ("JavaScript file (*.js)", "*.js"), ("C++ file (*.cpp)", "*.cpp")], defaultextension=[("All Files (*.*)", "*.*"), ("Text file (*.txt)", "*.txt"), ("Word file (*.docx)", "*.docx"), ("Python file (*.py)", "*.p"), ("Java file (*.java)", "*.java"), ("C# file (*.csharp)", "*.csharp"), ("HTML file (*.html)", "*.html"), ("CSS file (*.css)", "*.css"), ("JavaScript file (*.js)", "*.js"), ("C++ file (*.cpp)", "*.cpp")]), "r+", encoding="UTF-8")
 		self.main_screen_frame_textbox.insert("1.0", self.openned_file.read())
 
 	def __open_file_docx__(self):
