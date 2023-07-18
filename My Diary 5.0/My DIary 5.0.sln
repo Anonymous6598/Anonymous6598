@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "My DIary 5.0", "My DIary 5.0.pyproj", "{EF190ACF-D4E0-4115-A721-4371BE345624}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF190ACF-D4E0-4115-A721-4371BE345624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF190ACF-D4E0-4115-A721-4371BE345624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3FDCE3BD-E14D-403A-8EE6-0A950C6F26DB}
+	EndGlobalSection
+EndGlobal
