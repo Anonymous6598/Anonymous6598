@@ -438,7 +438,7 @@ class Scientific_calculator_additional_layout(CTkToplevel):
         self.title(self.TITLE)
         self.attributes(self.WINDOW, True)
 
-        self.main_screen_functions_text: CTkLabel = CTkLabel(master=self, text="Functions", font=("Roman", 55))
+        self.main_screen_functions_text: CTkLabel = CTkLabel(master=self, text="Функције", font=("Roman", 55))
         self.main_screen_functions_text.place(x=2, y=2)
 
         self.main_screen_logarith_function_button: CTkButton = CTkButton(master=self, text="logyX", height=50, width=70, fg_color="green", text_color="white", font=("Roman", 25), command=lambda: program.__button_operation__("log(x,y)"))
@@ -462,7 +462,7 @@ class Scientific_calculator_additional_layout(CTkToplevel):
         self.main_screen_ten_in_x_degree_function_button: CTkButton = CTkButton(master=self, text="10X", height=50, width=70, fg_color="green", text_color="white", font=("Roman", 25), command=lambda: program.__button_operation__("10**"))
         self.main_screen_ten_in_x_degree_function_button.place(x=422, y=55)
 
-        self.main_screen_trigonomical_functions_text: CTkLabel = CTkLabel(master=self, text="Trigonomical functions", font=("Roman", 55))
+        self.main_screen_trigonomical_functions_text: CTkLabel = CTkLabel(master=self, text="Тригонометричке функције", font=("Roman", 55))
         self.main_screen_trigonomical_functions_text.place(x=2, y=110)
 
         self.main_screen_sin_function_button: CTkButton = CTkButton(master=self, text="sin", height=50, width=70, fg_color="green", text_color="white", font=("Roman", 25), command=lambda: program.__button_operation__("sin()"))
