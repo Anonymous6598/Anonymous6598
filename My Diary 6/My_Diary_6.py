@@ -1,6 +1,6 @@
 from tkinter import filedialog
 from functools import cache
-from tkinter.messagebox	import showerror, showinfo, showwarning, askyesno
+from tkinter import showerror, showinfo, showwarning, askyesno
 from docx.shared import RGBColor, Pt
 import aspose.words as aspose_words
 import customtkinter, tkinter, pickle, os, sys, docx, subprocess
