@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "My Calculus 2", "My Calculus 2.pyproj", "{8EF12B51-C9B5-4350-BF31-23F7B62E4888}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EF12B51-C9B5-4350-BF31-23F7B62E4888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EF12B51-C9B5-4350-BF31-23F7B62E4888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46CA73E5-6DF1-4B30-88D8-9EB2ABA9CEFD}
+	EndGlobalSection
+EndGlobal
