@@ -5,4 +5,4 @@
 
 If somebody is very ambitious, i'll be glad to see you as a friend
 
-I also have second account AnonymousUbuntu2304. Subscribe to it please. Support my Linux account.
+I also have second account AnonymousUbuntu2304. Subscribe to it, please. Support my adventure s on Linux.
