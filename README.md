@@ -6,3 +6,5 @@
 If somebody is very ambitious, i'll be glad to see him as a friend
 
 I also have second account Anonymous5689. Subscribe to it, please. Support my adventures on Linux.
+
+-🎇 50 subscribers!!!!!!
