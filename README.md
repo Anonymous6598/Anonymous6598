@@ -1,4 +1,4 @@
-# Anonymous6598
+# Anonymous6598 (Виктор Илић (eng: Viktor Ilich))
 
 - 👋 Hi, I’m Виктор Илић (eng: Viktor Ilich), a.k.a @Anonymous6598
 - 👀 I’m interested in AI, frontend, backend and desktop development.
