@@ -1,7 +1,7 @@
 # 👋 Hi, I’m Виктор Илић (eng: Viktor Ilich), a.k.a @Anonymous6598
 - 👀 I’m interested in AI, frontend, backend and desktop development.
 - 🦾 I'm professional in Python(customtkinter, tkinter, flet and bardAI api for python) and Java
-- 💻 I use Windows 11 enterprise and Chrome OS Flex
+- 💻 I use Windows 11 enterprise and Ubuntu 22.04
 
 If somebody is very ambitious, I'll be glad to see him as a friend
 
