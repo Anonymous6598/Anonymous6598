@@ -1,6 +1,6 @@
 # 👋 Hi, I’m Виктор Илић (eng: Viktor Ilich), a.k.a Anonymous6598
 - 👀 I’m interested in AI, frontend, backend and desktop development.
-- 🦾 I'm professional in Python(customtkinter, tkinter, flet and bardAI api for python) and Mojo lang
+- 🦾 I'm professional in Python(customtkinter, tkinter, OpenAI api for python) and Mojo lang
 - 💻 I use Windows 11 enterprise and Ubuntu 23.04
 
 If somebody is very ambitious, I'll be glad to see him as a friend
