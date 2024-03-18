@@ -7,4 +7,4 @@ If somebody is very ambitious, I'll be glad to see him as a friend
 
 I also have second account Anonymous5689. Subscribe to it, please. Support my adventures on Linux.
 
-I also have GitLab link. Subscribe to it, please. Support my adventures in GitLab.
+I also have GitLab account. Subscribe to it, please. Support my adventures in GitLab.
