@@ -1,8 +1,8 @@
 # 👋 Hi, I’m Виктор Илић (eng: Viktor Ilich), a.k.a Anonymous6598
 - 👀 I’m interested in AI, fullstack and desktop development.
-- 🦾 I'm professional in Python(customtkinter, tkinter, gpt4free api for python) and Mojo lang
-- 💻 I use Windows 11 enterprise (laptop), Arch linux (kde plasma 6) (Hyper-V), Ubuntu 24.03 (Hyper-V).
-- 📝 I'm currently learning pytorch and openai api.
+- 🦾 I'm professional in Python(customtkinter, tkinter and huggingface api for python) and Mojo lang
+- 💻 I use Windows 11 enterprise (laptop), Arch linux (kde plasma 6) (Hyper-V), Ubuntu 24.03 (Hyper-V) and NixOS (secondary laptop).
+- 📝 I'm currently learning pytorch.
 - 🧑‍🎓 I'm studying at university.
 - 🧑‍💻 I want to become prompt engineer.
 
