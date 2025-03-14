@@ -14,8 +14,6 @@ If somebody is very ambitious, I'll be glad to see him as a friend
 
 I also have second account Anonymous5689. Subscribe to it, please. Support my adventures on Linux.
 
-My colleague opened GitHub account. If you are my follower, please, start following him. Here is a link to his profile: https://github.com/Rastko14
-
 ## Donations
 
 If you like me projects, you can donate me. 
