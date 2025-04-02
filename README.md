@@ -14,11 +14,6 @@ If somebody is very ambitious, I'll be glad to see him as a friend
 
 I also have second account Anonymous5689. Subscribe to it, please. Support my adventures on Linux.
 
-If you are my subscriber, don't forget to follow my univesity collegues:
-- Rastko Ivanković: <a href="https://github.com/Rastko14">link to github profile</a>
-- Petar Brkić: <a href="https://github.com/brkicpetar">link to github profile</a>
-- Stefan Dingarac: <a href="https://github.com/dingo-05">link to github profile</a>
-
 ## Donations
 
 If you like me projects, you can donate me. 
