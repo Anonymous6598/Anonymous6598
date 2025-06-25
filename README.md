@@ -15,7 +15,7 @@ If somebody is very ambitious, I'll be glad to see him as a friend
 I also have second account Anonymous5689. Subscribe to it, please. Support my adventures on Linux.
 
 ## Important news
->[!Information]
+>[!IMPORTANT]
 > Due to exams at my university I won't be able to make new updates for my apps. All new apps will be connected to my university projects and they won't be ment for public use. When I'm free, I'll make new updates.
 
 ## Donations
