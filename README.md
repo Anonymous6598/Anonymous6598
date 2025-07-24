@@ -1,4 +1,4 @@
-# 👋 Hi, I’m Виктор Илић (eng: Viktor Ilich), a.k.a Anonymous6598
+# 👋 Hi, I’m Viktor Ilić (eng: Viktor Ilich), a.k.a Anonymous6598
 
 ## About me
 
