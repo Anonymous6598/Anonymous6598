@@ -12,8 +12,6 @@
 
 If somebody is very ambitious, I'll be glad to see him as a friend
 
-I also have second account Anonymous5689. Subscribe to it, please. Support my adventures on Linux.
-
 ## Donations
 
 If you like me projects, you can donate me. 
