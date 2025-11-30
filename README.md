@@ -5,7 +5,7 @@
 - 👀 I’m interested in AI, fullstack, desktop development, IoT and smart cities.
 - 🦾 I'm professional in Python(customtkinter, tkinter, transformers(huggingface), intel npu acceleration library and OpenVino genai).
 - 💻 I use Windows 11 enterprise (main laptop), Arch linux (Hyperland) (Hyper-V), Ubuntu 24.02 lts (Hyper-V), Endavour OS (Hyper-V) and Linux Mint (second laptop).
-- 📝 I'm currently styding at university.
+- 📝 I'm currently styding at university (CS student).
 - 🧑‍💻 I like coding, androids, vm and Linux.
 
 ## Aditional info
